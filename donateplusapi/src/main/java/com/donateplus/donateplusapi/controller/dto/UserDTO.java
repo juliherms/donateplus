@@ -1,9 +1,13 @@
 package com.donateplus.donateplusapi.controller.dto;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.donateplus.donateplusapi.model.User;
 
 /**
  * This class represents DTO User. Responsible to transfer object
+ * 
  * @author j.a.vasconcelos
  *
  */
@@ -64,4 +68,13 @@ public class UserDTO {
 		this.password = password;
 	}
 
+	/**
+	 * Convert users to DTO
+	 * 
+	 * @param users
+	 * @return
+	 */
+	public static List<UserDTO> converter(List<User> users) {
+		return users.stream().map(UserDTO::new).collect(Collectors.toList());
+	}
 }

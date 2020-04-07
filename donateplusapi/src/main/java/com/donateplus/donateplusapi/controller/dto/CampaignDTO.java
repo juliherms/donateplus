@@ -1,6 +1,8 @@
 package com.donateplus.donateplusapi.controller.dto;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import com.donateplus.donateplusapi.model.Campaign;
 
@@ -54,6 +56,16 @@ public class CampaignDTO {
 
 	public void setCreateDate(LocalDateTime createDate) {
 		this.createDate = createDate;
+	}
+	
+	/**
+	 * Convert campaigns to DTO
+	 * 
+	 * @param users
+	 * @return
+	 */
+	public static List<CampaignDTO> converter(List<Campaign> campaigns) {
+		return campaigns.stream().map(CampaignDTO::new).collect(Collectors.toList());
 	}
 
 }
