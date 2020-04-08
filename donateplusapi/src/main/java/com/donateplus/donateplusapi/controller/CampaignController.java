@@ -25,4 +25,8 @@ public class CampaignController {
 	public List<Campaign> list() {
 		return null;
 	}
+	
+	public List<Campaign> findByUser(){
+		return null;
+	}
 }
