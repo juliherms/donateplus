@@ -1,13 +1,21 @@
 package com.donateplus.donateplusapi.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * This class represent user in application
  * 
  * @author j.a.vasconcelos
  *
  */
+@Entity(name="TB_USER")
 public class User {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
 	private String username;

@@ -2,19 +2,33 @@ package com.donateplus.donateplusapi.model;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
 /**
  * This class represents a campaing in the application
  * 
  * @author j.a.vasconcelos
  *
  */
+@Entity(name = "TB_CAMPAIGN")
+
 public class Campaign {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String title;
 	private String message;
-	private LocalDateTime createDate;
+	private LocalDateTime createDate = LocalDateTime.now();
+	@ManyToOne
 	private User user;
+	@Enumerated(EnumType.STRING)
 	private StatusCampaign status = StatusCampaign.NOT_STARTED;
 
 	public Campaign() {
