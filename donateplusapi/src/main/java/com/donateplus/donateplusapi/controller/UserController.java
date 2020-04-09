@@ -3,6 +3,8 @@ package com.donateplus.donateplusapi.controller;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -48,7 +50,7 @@ public class UserController {
 	 * @return 201 - Created
 	 */
 	@PostMapping
-	public ResponseEntity<UserDTO> create(@RequestBody UserForm userForm, UriComponentsBuilder uriBuilder) {
+	public ResponseEntity<UserDTO> create(@RequestBody @Valid UserForm userForm, UriComponentsBuilder uriBuilder) {
 
 		User user = userForm.converter();
 		userRepository.save(user);
