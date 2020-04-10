@@ -2,6 +2,7 @@ package com.donateplus.donateplusapi.controller;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -70,11 +71,14 @@ public class UserController {
 	 * @return
 	 */
 	@GetMapping("/{id}")
-	public UserDTO findById(@PathVariable("id") Long id) {
+	public ResponseEntity<UserDTO> findById(@PathVariable("id") Long id) {
 
-		User user = userRepository.getOne(id);
+		Optional<User> user = userRepository.findById(id);
+		if (user.isPresent()) {
+			return ResponseEntity.ok(new UserDTO(user.get()));
+		}
 
-		return new UserDTO(user);
+		return ResponseEntity.notFound().build();
 
 	}
 
