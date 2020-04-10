@@ -7,9 +7,11 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -63,6 +65,7 @@ public class UserController {
 
 	/**
 	 * Responsible to get user by id
+	 * 
 	 * @param id
 	 * @return
 	 */
@@ -75,4 +78,40 @@ public class UserController {
 
 	}
 
+	/**
+	 * Responsible to update user
+	 * 
+	 * @param id
+	 * @return
+	 */
+	@PutMapping("/{id}")
+	public ResponseEntity<UserDTO> update(@PathVariable Long id, @RequestBody @Valid UserForm userForm) {
+
+		User user = userForm.converter();
+
+		User obj = userRepository.getOne(id);
+
+		obj.setEmail(user.getEmail());
+		obj.setName(user.getName());
+		obj.setPassword(user.getPassword());
+		obj.setUsername(user.getUsername());
+
+		userRepository.save(obj);
+
+		return ResponseEntity.ok(new UserDTO(obj));
+	}
+
+	/**
+	 * Responsible to remove user
+	 * 
+	 * @param id
+	 * @return
+	 */
+	@DeleteMapping("/{id}")
+	public ResponseEntity<?> remove(@PathVariable Long id) {
+
+		userRepository.deleteById(id);
+		return ResponseEntity.ok().build();
+
+	}
 }
