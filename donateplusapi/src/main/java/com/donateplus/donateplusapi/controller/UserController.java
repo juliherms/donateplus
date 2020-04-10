@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,6 +46,7 @@ public class UserController {
 
 	/**
 	 * Responsible to create user in the application
+	 * 
 	 * @param userForm
 	 * @param uriBuilder
 	 * @return 201 - Created
@@ -57,6 +59,20 @@ public class UserController {
 		URI uri = uriBuilder.path("/users/{id}").buildAndExpand(user.getId()).toUri();
 
 		return ResponseEntity.created(uri).body(new UserDTO(user));
+	}
+
+	/**
+	 * Responsible to get user by id
+	 * @param id
+	 * @return
+	 */
+	@GetMapping("/{id}")
+	public UserDTO findById(@PathVariable("id") Long id) {
+
+		User user = userRepository.getOne(id);
+
+		return new UserDTO(user);
+
 	}
 
 }
