@@ -1,5 +1,7 @@
 package com.donateplus.donateplusapi.repository;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.donateplus.donateplusapi.model.User;
@@ -17,5 +19,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	 * @param username
 	 * @return
 	 */
-	User findByUsername(String username);
+	Optional<User> findByUsername(String username);
 }
