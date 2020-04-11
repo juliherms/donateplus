@@ -93,16 +93,23 @@ public class UserController {
 
 		User user = userForm.converter();
 
-		User obj = userRepository.getOne(id);
+		Optional<User> optional = userRepository.findById(id);
 
-		obj.setEmail(user.getEmail());
-		obj.setName(user.getName());
-		obj.setPassword(user.getPassword());
-		obj.setUsername(user.getUsername());
+		if (optional.isPresent()) {
 
-		userRepository.save(obj);
+			User obj = optional.get();
+			obj.setEmail(user.getEmail());
+			obj.setName(user.getName());
+			obj.setPassword(user.getPassword());
+			obj.setUsername(user.getUsername());
 
-		return ResponseEntity.ok(new UserDTO(obj));
+			userRepository.save(obj);
+
+			return ResponseEntity.ok(new UserDTO(obj));
+		}
+
+		return ResponseEntity.notFound().build();
+
 	}
 
 	/**
@@ -114,8 +121,14 @@ public class UserController {
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> remove(@PathVariable Long id) {
 
-		userRepository.deleteById(id);
-		return ResponseEntity.ok().build();
+		Optional<User> optional = userRepository.findById(id);
+
+		if (optional.isPresent()) {
+			userRepository.deleteById(id);
+			return ResponseEntity.ok().build();
+		}
+
+		return ResponseEntity.notFound().build();
 
 	}
 }
