@@ -1,7 +1,6 @@
 package com.donateplus.donateplusapi.controller.dto;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import org.springframework.data.domain.Page;
 
 import com.donateplus.donateplusapi.model.User;
 
@@ -74,7 +73,8 @@ public class UserDTO {
 	 * @param users
 	 * @return
 	 */
-	public static List<UserDTO> converter(List<User> users) {
-		return users.stream().map(UserDTO::new).collect(Collectors.toList());
+	public static Page<UserDTO> converter(Page<User> users) {
+
+		return users.map(UserDTO::new);
 	}
 }
