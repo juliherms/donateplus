@@ -14,7 +14,9 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.donateplus.donateplusapi.repository.UserRepository;
 import com.donateplus.donateplusapi.security.AuthenticatorService;
+import com.donateplus.donateplusapi.security.TokenService;
 
 /**
  * This class responsible to configure Spring Security in this project Control
@@ -29,6 +31,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	AuthenticatorService authenticatorService;
+
+	@Autowired
+	TokenService tokenService;
+	
+	@Autowired
+	UserRepository userRepository;
 
 	@Override
 	@Bean
@@ -51,13 +59,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
-		http.authorizeRequests()
-		.antMatchers(HttpMethod.GET, "/users").permitAll()
-		.antMatchers(HttpMethod.POST, "/auth").permitAll()
-		.anyRequest()
-		.authenticated()
-		.and().csrf().disable().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-		.and().addFilterBefore(new AuthenticatorTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/users").permitAll().antMatchers(HttpMethod.POST, "/auth")
+				.permitAll().anyRequest().authenticated().and().csrf().disable().sessionManagement()
+				.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().addFilterBefore(
+						new AuthenticatorTokenFilter(tokenService,userRepository), UsernamePasswordAuthenticationFilter.class);
 	}
 
 	/**
