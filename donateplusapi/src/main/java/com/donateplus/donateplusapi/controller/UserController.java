@@ -7,9 +7,9 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -47,7 +47,7 @@ public class UserController {
 	 * @return
 	 */
 	@GetMapping
-	public Page<UserDTO> list(Pageable pageable) {
+	public Page<UserDTO> list(@PageableDefault(sort="name", direction = Direction.ASC) Pageable pageable) {
 
 		Page<User> users = userRepository.findAll(pageable);
 
