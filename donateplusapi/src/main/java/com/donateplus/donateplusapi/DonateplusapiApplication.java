@@ -2,6 +2,7 @@ package com.donateplus.donateplusapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
 
 /**
@@ -11,6 +12,7 @@ import org.springframework.data.web.config.EnableSpringDataWebSupport;
  */
 @SpringBootApplication
 @EnableSpringDataWebSupport //allows pageable
+@EnableCaching
 public class DonateplusapiApplication {
 
 	public static void main(String[] args) {

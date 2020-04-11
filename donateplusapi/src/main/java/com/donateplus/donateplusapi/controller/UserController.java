@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
@@ -47,7 +48,8 @@ public class UserController {
 	 * @return
 	 */
 	@GetMapping
-	public Page<UserDTO> list(@PageableDefault(sort="name", direction = Direction.ASC) Pageable pageable) {
+	@Cacheable(value = "listUsers")
+	public Page<UserDTO> list(@PageableDefault(page = 0,size = 10, sort="name", direction = Direction.ASC) Pageable pageable) {
 
 		Page<User> users = userRepository.findAll(pageable);
 
