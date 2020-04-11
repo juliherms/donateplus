@@ -12,7 +12,7 @@ import org.springframework.data.web.config.EnableSpringDataWebSupport;
  */
 @SpringBootApplication
 @EnableSpringDataWebSupport //allows pageable
-@EnableCaching
+@EnableCaching //allows cache
 public class DonateplusapiApplication {
 
 	public static void main(String[] args) {
