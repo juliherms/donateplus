@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -49,7 +50,8 @@ public class UserController {
 	 */
 	@GetMapping
 	@Cacheable(value = "listUsers")
-	public Page<UserDTO> list(@PageableDefault(page = 0,size = 10, sort="name", direction = Direction.ASC) Pageable pageable) {
+	public Page<UserDTO> list(
+			@PageableDefault(page = 0, size = 10, sort = "name", direction = Direction.ASC) Pageable pageable) {
 
 		Page<User> users = userRepository.findAll(pageable);
 
@@ -64,6 +66,7 @@ public class UserController {
 	 * @return 201 - Created
 	 */
 	@PostMapping
+	@CacheEvict(value = "listUsers", allEntries = true)
 	public ResponseEntity<UserDTO> create(@RequestBody @Valid UserForm userForm, UriComponentsBuilder uriBuilder) {
 
 		User user = userForm.converter();
@@ -98,6 +101,7 @@ public class UserController {
 	 * @return
 	 */
 	@PutMapping("/{id}")
+	@CacheEvict(value = "listUsers", allEntries = true)
 	public ResponseEntity<UserDTO> update(@PathVariable Long id, @RequestBody @Valid UserForm userForm) {
 
 		User user = userForm.converter();
@@ -128,6 +132,7 @@ public class UserController {
 	 * @return
 	 */
 	@DeleteMapping("/{id}")
+	@CacheEvict(value = "listUsers", allEntries = true)
 	public ResponseEntity<?> remove(@PathVariable Long id) {
 
 		Optional<User> optional = userRepository.findById(id);
