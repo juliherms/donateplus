@@ -8,6 +8,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.web.client.RestTemplate;
 
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
 /**
  * Class principal
  * @author j.a.vasconcelos
@@ -16,6 +18,7 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 @EnableSpringDataWebSupport //allows pageable
 @EnableCaching //allows cache
+@EnableSwagger2 //allow Swagger
 public class DonateplusapiApplication {
 	
 	@Bean

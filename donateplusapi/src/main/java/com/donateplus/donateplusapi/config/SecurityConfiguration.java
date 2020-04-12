@@ -34,7 +34,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	TokenService tokenService;
-	
+
 	@Autowired
 	UserRepository userRepository;
 
@@ -59,21 +59,22 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/users").permitAll().antMatchers(HttpMethod.GET, "/actuator/**").
-		permitAll().antMatchers(HttpMethod.POST, "/auth")
-		.permitAll().antMatchers(HttpMethod.POST, "/donates/**")
-				.permitAll().anyRequest().authenticated().and().csrf().disable().sessionManagement()
-				.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().addFilterBefore(
-						new AuthenticatorTokenFilter(tokenService,userRepository), UsernamePasswordAuthenticationFilter.class);
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/users").permitAll()
+				.antMatchers(HttpMethod.GET, "/actuator/**").permitAll().antMatchers(HttpMethod.POST, "/auth")
+				.permitAll().antMatchers(HttpMethod.POST, "/donates/**").permitAll().anyRequest().authenticated().and()
+				.csrf().disable().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+				.addFilterBefore(new AuthenticatorTokenFilter(tokenService, userRepository),
+						UsernamePasswordAuthenticationFilter.class);
 	}
 
 	/**
 	 * Resource configurations, imgs
 	 */
+	// Configuracoes de recursos estaticos(js, css, imagens, etc.)
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		// TODO Auto-generated method stub
-
+		web.ignoring().antMatchers("/**.html", "/v2/api-docs", "/webjars/**", "/configuration/**",
+				"/swagger-resources/**");
 	}
 
 }
