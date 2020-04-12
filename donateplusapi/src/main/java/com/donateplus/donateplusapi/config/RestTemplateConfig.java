@@ -2,7 +2,6 @@ package com.donateplus.donateplusapi.config;
 
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -11,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
  * @author j.a.vasconcelos
  *
  */
-@Configuration
+//@Configuration
 public class RestTemplateConfig {
 
 	@Bean

@@ -59,7 +59,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/users").permitAll().antMatchers(HttpMethod.GET, "/actuator/**").permitAll().antMatchers(HttpMethod.POST, "/auth")
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/users").permitAll().antMatchers(HttpMethod.GET, "/actuator/**").
+		permitAll().antMatchers(HttpMethod.POST, "/auth")
+		.permitAll().antMatchers(HttpMethod.POST, "/donates/**")
 				.permitAll().anyRequest().authenticated().and().csrf().disable().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().addFilterBefore(
 						new AuthenticatorTokenFilter(tokenService,userRepository), UsernamePasswordAuthenticationFilter.class);

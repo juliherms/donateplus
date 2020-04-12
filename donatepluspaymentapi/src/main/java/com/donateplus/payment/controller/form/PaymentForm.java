@@ -1,8 +1,8 @@
-package com.donateplus.donateplusapi.controller.dto;
+package com.donateplus.payment.controller.form;
 
 import java.math.BigDecimal;
 
-public class DonationDTO {
+public class PaymentForm {
 
 	private Long idUser;
 	private Long idProduct;

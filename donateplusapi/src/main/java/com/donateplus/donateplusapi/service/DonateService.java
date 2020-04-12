@@ -30,7 +30,7 @@ public class DonateService {
 
 		HttpEntity<DonationDTO> request = new HttpEntity<>(donationDTO);
 
-		ResponseEntity<Long> uuid = client.exchange("http://payment/", HttpMethod.POST, request, Long.class);
+		ResponseEntity<Long> uuid = client.exchange("http://PAYMENT/payments", HttpMethod.POST, request, Long.class);
 
 		return uuid.getBody();
 
