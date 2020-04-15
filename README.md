@@ -15,10 +15,14 @@ Exemplo de uma aplicação em Spring Boot e Eureka utilizando microserviços
 - [Jenkins](https://jenkins.io/) - Ferramenta responsável pela execução da automatização de testes e integração contínua.
 - [Eureka](https://jenkins.io/) - Service Discovery
 
-## Solução
+## Service Discovery
 
 <img src="img/eureka.png">
+
+## Monitoramento
 
 <img src="img/spring_admin.png">
 
 <img src="img/spring_admin2.png">
+
+## Solução
