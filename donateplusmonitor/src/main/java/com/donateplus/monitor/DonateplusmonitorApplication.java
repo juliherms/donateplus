@@ -8,6 +8,7 @@ import de.codecentric.boot.admin.server.config.EnableAdminServer;
 
 /**
  * Application responsible to monitor microservices
+ * 
  * @author j.a.vasconcelos
  *
  */
@@ -19,5 +20,4 @@ public class DonateplusmonitorApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DonateplusmonitorApplication.class, args);
 	}
-
 }

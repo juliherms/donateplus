@@ -18,3 +18,7 @@ Exemplo de uma aplicação em Spring Boot e Eureka utilizando microserviços
 ## Solução
 
 <img src="img/eureka.png">
+
+<img src="img/spring_admin.png">
+
+<img src="img/spring_admin2.png">
