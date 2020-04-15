@@ -17,13 +17,21 @@ Exemplo de uma aplicação em Spring Boot e Eureka utilizando microserviços
 
 ## Arquitetura
 
+- Montei o fluxograma abaixo para representar de maneira ilustrativa como foi aplicado cada tecnologia e como se relacionam.
+
 <img src="img/archtecture.png">
 
 ## Service Discovery
 
+- Responsável por facilitar a comunicação entre 1 ou mais microserviços. Os microserviços se registram no Eureka e passam a ser chamado pelos demais através de sua alias.
+Este ponto ajuda bastante quando temos vários microserviços na solução e bem como mais de uma instância.
+
 <img src="img/eureka.png">
 
 ## Monitoramento
+
+- Atualmente a ferramanta mais utilizada por grande empresas para monitoramento de microserviços é o Splunk. Neste caso aqui fiz a utilização de um projeto chamado 
+Spring Admin. A sua configuração é bem simples e sua interface é bastante amigável.
 
 <img src="img/spring_admin.png">
 
