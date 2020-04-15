@@ -17,7 +17,7 @@ Exemplo de uma aplicação em Spring Boot e Eureka utilizando microserviços
 
 ## Arquitetura
 
-<img src="img/archtecture.png>
+<img src="img/archtecture.png">
 
 ## Service Discovery
 
