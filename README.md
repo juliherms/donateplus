@@ -26,6 +26,10 @@ Exemplo de uma aplicação em Spring Boot e Eureka utilizando microserviços
 - Responsável por facilitar a comunicação entre 1 ou mais microserviços. Os microserviços se registram no Eureka e passam a ser chamado pelos demais através de sua alias.
 Este ponto ajuda bastante quando temos vários microserviços na solução e bem como mais de uma instância.
 
+No exemplo abaixo é possível identificar dois serviços registrados no Eureka. o donateplusapi e o payment, dado a explicação acima podemos imaginar um cenário onde tivéssemo
+uma alto volume de requisições de pagamento por um período sazonal. Com a arquitetura proposta é possível duplicar o serviços de payment e registrar no Eukera realizando o
+balance do volume de requisições.
+
 <img src="img/eureka.png">
 
 ## Monitoramento
