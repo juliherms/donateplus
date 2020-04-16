@@ -3,22 +3,15 @@ package com.donateplus.donateplusapi.controller;
 import java.math.BigDecimal;
 import java.net.URI;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.donateplus.donateplusapi.client.PaymentClient;
 import com.donateplus.donateplusapi.controller.dto.DonationDTO;
-import com.donateplus.donateplusapi.controller.dto.UserDTO;
-import com.donateplus.donateplusapi.controller.form.UserForm;
-import com.donateplus.donateplusapi.model.User;
 import com.donateplus.donateplusapi.service.DonateService;
 
 /**
