@@ -2,6 +2,8 @@ package com.donateplus.payment.controller;
 
 import java.net.URI;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,6 +23,8 @@ import com.donateplus.payment.controller.form.PaymentForm;
 @RequestMapping("/payments")
 public class PaymentController {
 
+	private static final Logger LOG = LoggerFactory.getLogger(PaymentController.class);
+	
 	/**
 	 * Responsible to pay donation
 	 * 
@@ -31,6 +35,8 @@ public class PaymentController {
 	@PostMapping
 	public ResponseEntity<Long> create(@RequestBody PaymentForm paymentForm, UriComponentsBuilder uriBuilder) {
 
+		LOG.info("Payment referr donation received for user {}", paymentForm.getIdUser());
+		
 		System.out.println(paymentForm);
 
 		long ret = 1L;

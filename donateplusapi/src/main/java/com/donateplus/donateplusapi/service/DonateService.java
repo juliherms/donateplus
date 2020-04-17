@@ -1,11 +1,9 @@
 package com.donateplus.donateplusapi.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 import com.donateplus.donateplusapi.client.PaymentClient;
 import com.donateplus.donateplusapi.controller.dto.DonationDTO;
@@ -18,9 +16,10 @@ import com.donateplus.donateplusapi.controller.dto.DonationDTO;
 @Service
 public class DonateService {
 
+	private static final Logger LOG = LoggerFactory.getLogger(DonateService.class);
+	
 	@Autowired
 	private PaymentClient paymentClient;
-
 
 	/**
 	 * Responsible to call maicroservice payment
@@ -30,7 +29,11 @@ public class DonateService {
 	 */
 	public Long makeDonation(DonationDTO donationDTO) {
 
+		LOG.info("Make donate of user {}", donationDTO.getIdUser());
+		
 		Long uuid = paymentClient.create(donationDTO);
+		
+		LOG.info("Payment okay!");
 		return uuid;
 	}
 
