@@ -13,9 +13,9 @@ Exemplo de uma aplicação em Spring Boot e Eureka utilizando microserviços
 - [Insominia](https://insomnia.rest/) - Ferramenta utilizada para realizar testes de chamadas via rest.
 - [Swagger](https://swagger.io/) - Ferramenta utilizada para documentação da API construída neste projeto.
 - [Jenkins](https://jenkins.io/) - Ferramenta responsável pela execução da automatização de testes e integração contínua.
-- [Eureka](https://spring.io/projects/spring-cloud-netflix/) - Service Discovery responsável por unificar o registros dos microserviços
-- [Feign](https://spring.io/projects/spring-cloud-openfeign/) - Reponsável por executar o Load Balance através do Ribbon na chamada de intgração dos microserviços.
-- [Sleuth](https://spring.io/projects/spring-cloud-sleuth/) - Responsável por realizar o trace de log através de um identificador único(Trace ID) de acordo com as requisições entre os microserviços
+- [Spring Netflix Eureka](https://spring.io/projects/spring-cloud-netflix/) - Service Discovery responsável por unificar o registros dos microserviços
+- [Spring Feign](https://spring.io/projects/spring-cloud-openfeign/) - Reponsável por executar o Load Balance através do Ribbon na chamada de intgração dos microserviços.
+- [Spring Sleuth](https://spring.io/projects/spring-cloud-sleuth/) - Responsável por realizar o trace de log através de um identificador único(Trace ID) de acordo com as requisições entre os microserviços
 
 ## Arquitetura
 
