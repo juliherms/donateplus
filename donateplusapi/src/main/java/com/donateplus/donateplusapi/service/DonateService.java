@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.donateplus.donateplusapi.client.PaymentClient;
 import com.donateplus.donateplusapi.controller.dto.DonationDTO;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 /**
  * This class responsible to provide services about donation
@@ -18,6 +19,7 @@ public class DonateService {
 
 	private static final Logger LOG = LoggerFactory.getLogger(DonateService.class);
 	
+	
 	@Autowired
 	private PaymentClient paymentClient;
 
@@ -27,6 +29,7 @@ public class DonateService {
 	 * @param donationDTO
 	 * @return return uuid payment.
 	 */
+	@HystrixCommand(fallbackMethod = "makeDonationFallback")
 	public Long makeDonation(DonationDTO donationDTO) {
 
 		LOG.info("Make donate of user {}", donationDTO.getIdUser());
@@ -35,6 +38,15 @@ public class DonateService {
 		
 		LOG.info("Payment okay!");
 		return uuid;
+	}
+	
+	/**
+	 * This method responsible to return fallback in make donation
+	 * @param donationDTO
+	 * @return
+	 */
+	public Long makeDonationFallback(DonationDTO donationDTO) {
+		return 0L;
 	}
 
 }

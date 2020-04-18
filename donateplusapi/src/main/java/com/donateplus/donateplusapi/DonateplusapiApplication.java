@@ -3,6 +3,7 @@ package com.donateplus.donateplusapi;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
@@ -13,16 +14,18 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * Class principal
+ * 
  * @author j.a.vasconcelos
  *
  */
 @SpringBootApplication
-@EnableSpringDataWebSupport //allows pageable
-@EnableCaching //allows cache
-@EnableSwagger2 //allows Swagger
-@EnableFeignClients 
+@EnableSpringDataWebSupport // allows pageable
+@EnableCaching // allows cache
+@EnableSwagger2 // allows Swagger
+@EnableFeignClients
+@EnableCircuitBreaker // allow Circuit Breaker
 public class DonateplusapiApplication {
-	
+
 	@Bean
 	@LoadBalanced
 	public RestTemplate getRestTemplate() {
