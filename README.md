@@ -16,6 +16,7 @@ Exemplo de uma aplicação em Spring Boot e Eureka utilizando microserviços
 - [Spring Netflix Eureka](https://spring.io/projects/spring-cloud-netflix/) - Service Discovery responsável por unificar o registros dos microserviços
 - [Spring Feign](https://spring.io/projects/spring-cloud-openfeign/) - Reponsável por executar o Load Balance através do Ribbon na chamada de intgração dos microserviços.
 - [Spring Sleuth](https://spring.io/projects/spring-cloud-sleuth/) - Responsável por realizar o trace de log através de um identificador único(Trace ID) de acordo com as requisições entre os microserviços
+- [Zuul-Gateway](https://spring.io/projects/spring-cloud-sleuth/) - Responsável por se conectar com o eureka e expor via gateway os microserviços registrados.
 
 ## Arquitetura
 
