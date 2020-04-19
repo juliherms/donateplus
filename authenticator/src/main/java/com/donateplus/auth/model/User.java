@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -30,8 +31,13 @@ public class User implements UserDetails {
 	private Long id;
 
 	private String name;
+
+	@Column(name = "login", unique = true)
 	private String login;
+
+	@Column(name = "EMAIL", unique = true)
 	private String email;
+	
 	private String password;
 	private boolean enable;
 
@@ -39,9 +45,10 @@ public class User implements UserDetails {
 	private List<Profile> profiles = new ArrayList<>();
 
 	public User() {
+		
 	}
-	
-	public User(String name,String login,String email,String password) {
+
+	public User(String name, String login, String email, String password) {
 		this.name = name;
 		this.login = login;
 		this.email = email;
@@ -123,7 +130,7 @@ public class User implements UserDetails {
 	public void setProfiles(List<Profile> profiles) {
 		this.profiles = profiles;
 	}
-	
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return this.profiles;
@@ -148,13 +155,11 @@ public class User implements UserDetails {
 	public boolean isEnabled() {
 		return true;
 	}
-	
+
 	@Override
 	public String getUsername() {
 		return this.login;
 	}
-
-
 
 	@Override
 	public int hashCode() {

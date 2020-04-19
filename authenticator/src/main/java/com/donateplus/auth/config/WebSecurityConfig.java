@@ -1,10 +1,14 @@
 package com.donateplus.auth.config;
 
+import java.util.Arrays;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -21,6 +25,10 @@ import com.donateplus.auth.security.AuthenticatorService;
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+	
+	@Autowired
+	private Environment env;
+	
 	@Autowired
 	AuthenticatorService authenticatorService;
 
@@ -45,18 +53,29 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	 */
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		
+		if (Arrays.asList(env.getActiveProfiles()).contains("test")) {
+			
+			auth.inMemoryAuthentication()
+				.passwordEncoder(passwordEncoder())
+				.withUser("juliherms")
+				.password(passwordEncoder()
+				.encode("julihermspwd"))
+			    .roles("USER");
+			
+		}else {
+		
+			//integrated authenticator
+			auth.userDetailsService(authenticatorService).passwordEncoder(new BCryptPasswordEncoder());
+		}
+	}
 
-		// TODO integrated
-		// informo quem eh service e quem eh o encriptador
-		auth.userDetailsService(authenticatorService).passwordEncoder(new BCryptPasswordEncoder());
-
-		// auth.authenticationProvider(authenticationProvider());
-
-		// TODO persist in the database
-		/*
-		 * auth.inMemoryAuthentication() .passwordEncoder(passwordEncoder())
-		 * .withUser("juliherms") .password(passwordEncoder().encode("julihermspwd"))
-		 * .roles("USER");
-		 */
+	/**
+	 * Resource configurations, imgs
+	 */
+	@Override
+	public void configure(WebSecurity web) throws Exception {
+		web.ignoring().antMatchers("/**.html", "/v2/api-docs", "/webjars/**", "/configuration/**",
+				"/swagger-resources/**");
 	}
 }
