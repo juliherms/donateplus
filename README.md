@@ -48,4 +48,11 @@ Spring Admin. A sua configuração é bem simples e sua interface é bastante am
 
 <img src="img/spring_admin2.png">
 
+## Frontend - Angular
+
+```sh
+$ npm install
+$ ng serve -o
+```
+
 ## Solução
