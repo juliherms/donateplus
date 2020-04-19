@@ -17,16 +17,25 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
 	private static final Logger LOG = LoggerFactory.getLogger(ResourceServerConfig.class);
 	
+	private static final String[] PUBLIC_MATCHERS_POST = {"/users/**"};
+	
+	private static final String[] PUBLIC_MATCHERS_GET = {"/users/**"};
+	
 	
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
 
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/users").permitAll()
-								.antMatchers(HttpMethod.POST,"/users").permitAll();
+		for (String string : PUBLIC_MATCHERS_GET) {
+			LOG.info("Urls de GET pública - " + string);
+		}
 		
-		LOG.info("authenticator GET endpoint {} authorized","/users");
+		for (String string : PUBLIC_MATCHERS_POST) {
+			LOG.info("Urls de POST publica - " + string);
+		}
 		
-
+		http.authorizeRequests()
+		.antMatchers(HttpMethod.POST, PUBLIC_MATCHERS_POST).permitAll()
+		.antMatchers(HttpMethod.POST, PUBLIC_MATCHERS_GET).permitAll();
 	}
 
 }
