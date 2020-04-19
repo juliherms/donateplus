@@ -40,6 +40,13 @@ public class User implements UserDetails {
 
 	public User() {
 	}
+	
+	public User(String name,String login,String email,String password) {
+		this.name = name;
+		this.login = login;
+		this.email = email;
+		this.password = password;
+	}
 
 	public User(User user) {
 		super();
