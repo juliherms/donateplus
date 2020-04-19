@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.donateplus.donateplusapi.client.PaymentClient;
 import com.donateplus.donateplusapi.controller.dto.DonationDTO;
 import com.donateplus.donateplusapi.service.DonateService;
 
