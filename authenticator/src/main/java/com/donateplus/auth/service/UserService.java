@@ -19,7 +19,6 @@ public class UserService {
 	@Autowired
 	UserRepository repo;
 	
-	
 	/**
 	 * Return all users from database;
 	 * @return
