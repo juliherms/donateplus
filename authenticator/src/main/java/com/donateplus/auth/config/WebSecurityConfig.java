@@ -62,9 +62,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.password(passwordEncoder()
 				.encode("julihermspwd"))
 			    .roles("USER");
-			
 		}else {
-		
 			//integrated authenticator
 			auth.userDetailsService(authenticatorService).passwordEncoder(new BCryptPasswordEncoder());
 		}

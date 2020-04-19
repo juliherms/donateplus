@@ -19,14 +19,14 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	
 	private static final String[] PUBLIC_MATCHERS_POST = {"/users/**"};
 	
-	private static final String[] PUBLIC_MATCHERS_GET = {"/users/**"};
+	private static final String[] PRIVATE_MATCHERS_GET = {"/users/**","/user/**"};
 	
 	
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
 
-		for (String string : PUBLIC_MATCHERS_GET) {
-			LOG.info("Urls de GET pública - " + string);
+		for (String string : PRIVATE_MATCHERS_GET) {
+			LOG.info("Urls de GET privadas - " + string);
 		}
 		
 		for (String string : PUBLIC_MATCHERS_POST) {
@@ -35,7 +35,9 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 		
 		http.authorizeRequests()
 		.antMatchers(HttpMethod.POST, PUBLIC_MATCHERS_POST).permitAll()
-		.antMatchers(HttpMethod.POST, PUBLIC_MATCHERS_GET).permitAll();
+		.antMatchers(HttpMethod.GET,PRIVATE_MATCHERS_GET).hasAnyRole("USER")
+		.anyRequest().denyAll();
+		//.antMatchers(HttpMethod.POST, PUBLIC_MATCHERS_GET).permitAll();
 	}
 
 }
