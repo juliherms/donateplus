@@ -33,11 +33,14 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 		
+		//TODO persist in database
+		
 		clients.inMemory()
 			.withClient("donateplus")
 			.secret(passwordEncoder.encode("donatepwd"))
 			.authorizedGrantTypes("password")
 			.scopes("web", "mobile");
+		
 	}
 
 	/**

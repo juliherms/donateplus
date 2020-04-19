@@ -44,6 +44,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		
+		//TODO persist in the database
 		auth.inMemoryAuthentication()
 		.passwordEncoder(passwordEncoder())
 		.withUser("juliherms")
