@@ -55,4 +55,6 @@ $ npm install
 $ ng serve -o
 ```
 
+<img src="img/frontend.png">
+
 ## Solução
