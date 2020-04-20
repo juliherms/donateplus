@@ -3,6 +3,9 @@ import { ApiService } from './../../core/api.service';
 import { User } from './../../core/model/login';
 import { Component, OnInit } from '@angular/core';
 
+/**
+ * this class responsible to shows page login
+ */
 @Component({
   selector: 'app-login-user',
   templateUrl: './login-user.component.html',

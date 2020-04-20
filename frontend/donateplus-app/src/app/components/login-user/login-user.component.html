@@ -1,3 +1,35 @@
-<p>
-  login-user works!
-</p>
+<section class="grey-text w-responsive mx-auto p-5">
+  <!-- Form login -->
+  <form #loginForm="ngForm">
+    <h1 class="h4 mb-4 text-center font-weight-bold">Login</h1>
+    <!-- form group-->
+    <div class="form-group">
+      <label for="email">Usuário</label>
+      <input type="text" class="form-control" id="email" placeholder="Nome de usuário"  required
+      [(ngModel)]="user.email" name="email" #email="ngModel">
+
+      <div [hidden]="email.valid || email.pristine"  class="alert alert-danger">
+        Favor digitar o nome de usuário!
+      </div>
+    </div>
+    <!-- form group-->
+
+    <!-- form group-->
+    <div class="form-group">
+      <label for="password">Senha</label>
+      <input type="password" class="form-control" id="password" placeholder="Senha"
+      required
+      [(ngModel)]="user.password" name="password" #password="ngModel">
+      <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+          Favor digitar a senha!
+      </div>
+    </div>
+    <!-- form group-->
+    <!-- buttons -->  
+    <button *ngIf="!submitted" class="btn btn-dark btn-block" (click)="login()" [disabled]="!loginForm.form.valid">Entrar</button>
+    <button *ngIf="submitted" class="btn btn-dark btn-block" type="button">
+      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        Carregando...
+    </button>
+  </form>
+</section>
