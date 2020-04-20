@@ -10,6 +10,8 @@ import { ResendRegistratonTokenComponent } from './components/resend-registraton
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { ListUserComponent } from './components/list-user/list-user.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
+import { HeaderComponent } from './shared/components/navigation/header/header.component';
+import { DeleteUserModalComponent } from './shared/components/modals/delete-user-modal/delete-user-modal.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
     ResendRegistratonTokenComponent,
     EditUserComponent,
     ListUserComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    HeaderComponent,
+    DeleteUserModalComponent
   ],
   imports: [
     BrowserModule,
