@@ -30,7 +30,7 @@ Exemplo de uma aplicação em Spring Boot e Eureka utilizando microserviços
 - http://localhost:8761/ - Eureka-Server - Service Discovery responsável por registar os microserviços
 - http://localhost:8089/ - Spring Admin - Responsável por monitorar os microserviços
 - http://localhost:8088/ - Authenticator - Microserviço responsável por realizar autenticação e autorização utilizando OAuth2
-- http://localhost:8080/ - DonatePlusApi - Microserviço responsável por disponbilizar os endpoints de cadastro de doadores, ongs e campanhas
+- http://localhost:8080/ - DonatePlusApi - Microserviço responsável por expor endpoints de cadastro de doadores, ongs e campanhas
 - http://localhost:8082/ - PaymentApi -  Microserviço responsável por disponbilizar o serviço de transaçao das doações
 
 ## Configurações
