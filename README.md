@@ -54,7 +54,7 @@ Este ponto ajuda bastante quando temos vários microserviços na solução e bem
 uma alto volume de requisições de pagamento por um período sazonal. Com a arquitetura proposta é possível duplicar o serviços de payment e registrar no Eukera realizando o
 balance do volume de requisições.
 
-<img src="img/eureka.png">
+<img src="img/eureka2.png">
 
 ## Monitoramento
 
@@ -63,7 +63,7 @@ Spring Admin. A sua configuração é bem simples e sua interface é bastante am
 
 - Visualização de Dashboard 
 
-<img src="img/spring_admin.png">
+<img src="img/spring_admin3.png">
 
 - Detalhes de consumo e uso de memória
 
