@@ -38,7 +38,7 @@ Exemplo de uma aplicação em Spring Boot e Netflix OSS utilizando fundamentos d
 | Spring Cloud components         | Resources  |
 |---------------------------------|------------|
 | Service Discovery               | [Eureka server](eureka-server) |
-| API Gateway                     | [Zuul reverse proxy](zuul-gateway/src/main/java/com/donateplus/zuul/ZuulGatewayApplication.java) and [Routing configuration](https://github.com/spring-petclinic/spring-petclinic-microservices-config/blob/master/api-gateway.yml) |
+| API Gateway                     | [Zuul reverse proxy](zuul-gateway/src/main/java/com/donateplus/zuul/ZuulGatewayApplication.java) and [Routing configuration](donateplusapi/src/main/resources/application.properties) |
 | Circuit Breaker                 | [Hystrix fallback method](donateplusapi/src/main/java/com/donateplus/donateplusapi/service/DonateService.java)  |
 
 
@@ -55,7 +55,7 @@ balance do volume de requisições.
 
 ## Monitoramento
 
-- Atualmente a ferramanta mais utilizada por grande empresas para monitoramento de microserviços é o Splunk. Neste caso aqui fiz a utilização de um projeto chamado 
+- Atualmente a ferramenta mais utilizada por grande empresas para monitoramento de microserviços é o Splunk. Neste caso aqui fiz a utilização de um projeto chamado 
 Spring Admin. A sua configuração é bem simples e sua interface é bastante amigável.
 
 - Visualização de Dashboard 
