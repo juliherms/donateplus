@@ -21,6 +21,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	
 	private static final String[] PRIVATE_MATCHERS_GET = {"/users/**","/user/**"};
 	
+	private static final String[] PUBLIC_MATCHERS_GET = {"/actuator/**"};
+	
 	
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
@@ -36,6 +38,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 		http.csrf().disable().authorizeRequests()
 		.antMatchers(HttpMethod.OPTIONS, "/oauth/token").permitAll()
 		.antMatchers(HttpMethod.POST, PUBLIC_MATCHERS_POST).permitAll()
+		.antMatchers(HttpMethod.GET, PUBLIC_MATCHERS_GET).permitAll()
 		.antMatchers(HttpMethod.GET,PRIVATE_MATCHERS_GET).hasAnyRole("USER")
 		.anyRequest().denyAll();
 		
