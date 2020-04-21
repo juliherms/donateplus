@@ -13,11 +13,19 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
  */
 @Configuration
 public class ResourceServiceConfig extends ResourceServerConfigurerAdapter {
+	
+	private static final String[] PUBLIC_MATCHERS_GET = {"/actuator/**"};
 
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
 		
-		http.authorizeRequests().antMatchers(HttpMethod.POST, "/payments").hasRole("USER");
+		http.authorizeRequests()
+		.antMatchers(HttpMethod.GET, PUBLIC_MATCHERS_GET).permitAll()
+		.anyRequest().authenticated();
+		
+		
+		
+		//http.authorizeRequests().antMatchers(HttpMethod.POST, "/payments").hasRole("USER");
 		
 	}
 }
