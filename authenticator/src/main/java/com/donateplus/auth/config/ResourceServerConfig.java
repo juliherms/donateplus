@@ -33,11 +33,13 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 			LOG.info("Urls de POST publica - " + string);
 		}
 		
-		http.authorizeRequests()
+		http.csrf().disable().authorizeRequests()
+		.antMatchers(HttpMethod.OPTIONS, "/oauth/token").permitAll()
 		.antMatchers(HttpMethod.POST, PUBLIC_MATCHERS_POST).permitAll()
 		.antMatchers(HttpMethod.GET,PRIVATE_MATCHERS_GET).hasAnyRole("USER")
 		.anyRequest().denyAll();
-		//.antMatchers(HttpMethod.POST, PUBLIC_MATCHERS_GET).permitAll();
+		
+		
 	}
 
 }

@@ -1,6 +1,6 @@
 import { HttpHeaders } from '@angular/common/http';
 
-export const BASE_URL = 'http://localhost:8088';
+export const BASE_URL = 'http://localhost:8088/';
 
 export const URL_TOKEN = BASE_URL + 'oauth/token';
 export const REGISTER_URL = BASE_URL + '/users';
@@ -24,5 +24,5 @@ export const HEADERS_REGISTER = new HttpHeaders({
 });
 
 export const HEADERS_COMMUN = new HttpHeaders({
-    Authorization: 'Basic ' + btoa('cliente' + ':' + '123') 
+    Authorization: 'Basic ' + btoa('donateplus' + ':' + 'donatepwd') 
 });

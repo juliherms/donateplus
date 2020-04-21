@@ -6,7 +6,7 @@
     <div class="form-group">
       <label for="email">Usuário</label>
       <input type="text" class="form-control" id="email" placeholder="Nome de usuário"  required
-      [(ngModel)]="user.email" name="email" #email="ngModel">
+      [(ngModel)]="user.login" name="email" #email="ngModel">
 
       <div [hidden]="email.valid || email.pristine"  class="alert alert-danger">
         Favor digitar o nome de usuário!

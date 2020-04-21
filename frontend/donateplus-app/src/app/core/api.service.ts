@@ -14,7 +14,7 @@ export class ApiService {
 
   constructor(private httpClient: HttpClient) {
 
-    this.baseUrl = `${AppUtils.BASE_URL}` + '/users';
+    this.baseUrl = `${AppUtils.BASE_URL}` + 'user';
 
    }
 
@@ -23,6 +23,8 @@ export class ApiService {
     * @param user 
     */
   doLogin(user: User): Observable <any> {
+
+    console.log(user);
 
     //user 
     const params = new HttpParams()
@@ -36,11 +38,15 @@ export class ApiService {
       params
     };
 
+    console.log(AppUtils.URL_TOKEN);
+
+    console.log(options);
+
     return this.httpClient.post(AppUtils.URL_TOKEN,null,options); 
  
   }
 
   getMainUser(token: any): Observable<any> {
-    return this.httpClient.get<any>(`${this.baseUrl}` + '/main', AppUtils.OPTIONS_OBJECTO)
+    return this.httpClient.get<any>(`${this.baseUrl}`, AppUtils.OPTIONS_OBJECTO)
   }
 }
