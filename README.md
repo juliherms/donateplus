@@ -22,7 +22,7 @@ Exemplo de uma aplicação em Spring Boot e Netflix OSS utilizando fundamentos d
 
 - Montei o fluxograma abaixo para representar de maneira ilustrativa como foi aplicado cada tecnologia e como se relacionam.
 
-<img src="img/archtecture.png">
+<img src="img/archtecture1.png">
 
 ## Microserviços
 
