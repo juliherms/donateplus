@@ -26,12 +26,12 @@ Exemplo de uma aplicação em Spring Boot e Eureka utilizando microserviços
 
 ## Microserviços
 
-- http://localhost:5555/ - Zuul-Gateway - Responsável por centralizar as chamadas externas
+- http://localhost:5555/ - Zuul-Gateway -  Responsável por centralizar as chamadas externas
 - http://localhost:8761/ - Eureka-Server - Service Discovery responsável por registar os microserviços
-- http://localhost:8089/ - Spring Admin - Responsável por monitorar os microserviços
-- http://localhost:8088/ - Authenticator - Microserviço responsável por realizar autenticação e autorização utilizando OAuth2
-- http://localhost:8080/ - DonatePlusApi - Microserviço responsável por expor endpoints de cadastro de doadores, ongs e campanhas
-- http://localhost:8082/ - PaymentApi -  Microserviço responsável por disponbilizar o serviço de transaçao das doações
+- http://localhost:8089/ - Spring Admin -  Monitora os microserviços
+- http://localhost:8088/ - Authenticator - Responsável por realizar autenticação e autorização utilizando OAuth2
+- http://localhost:8080/ - DonatePlusApi - Responsável por expor endpoints de cadastro de doadores, ongs e campanhas
+- http://localhost:8082/ - PaymentApi -    Responsável por disponbilizar o serviço de transaçao das doações
 
 ## Configurações
 
