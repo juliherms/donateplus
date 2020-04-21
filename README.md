@@ -24,6 +24,27 @@ Exemplo de uma aplicação em Spring Boot e Eureka utilizando microserviços
 
 <img src="img/archtecture.png">
 
+## Microserviços
+
+- http://localhost:5555/ - Zuul-Gateway - Responsável por centralizar as chamadas externas
+- http://localhost:8761/ - Eureka-Server - Service Discovery responsável por registar os microserviços
+- http://localhost:8089/ - Spring Admin - Responsável por monitorar os microserviços
+- http://localhost:8088/ - Authenticator - Microserviço responsável por realizar autenticação e autorização utilizando OAuth2
+- http://localhost:8080/ - DonatePlusApi - Microserviço responsável por disponbilizar os endpoints de cadastro de doadores, ongs e campanhas
+- http://localhost:8082/ - PaymentApi -  Microserviço responsável por disponbilizar o serviço de transaçao das doações
+
+## Configurações
+
+| Spring Cloud components         | Resources  |
+|---------------------------------|------------|
+| Configuration server            | [Config server properties](spring-petclinic-config-server/src/main/resources/application.yml) and [Configuration repository] |
+| Service Discovery               | [Eureka server](spring-petclinic-discovery-server) and [Service discovery client](spring-petclinic-vets-service/src/main/java/org/springframework/samples/petclinic/vets/VetsServiceApplication.java) |
+| API Gateway                     | [Zuul reverse proxy](spring-petclinic-api-gateway/src/main/java/org/springframework/samples/petclinic/api/ApiGatewayApplication.java) and [Routing configuration](https://github.com/spring-petclinic/spring-petclinic-microservices-config/blob/master/api-gateway.yml) |
+| Docker Compose                  | [Spring Boot with Docker guide](https://spring.io/guides/gs/spring-boot-docker/) and [docker-compose file](docker-compose.yml) |
+| Circuit Breaker                 | [Hystrix fallback method](spring-petclinic-api-gateway/src/main/java/org/springframework/samples/petclinic/api/application/VisitsServiceClient.java)  |
+| Grafana / Prometheus Monitoring | [Micrometer implementation](https://micrometer.io/), [Spring Boot Actuator Production Ready Metrics] |
+
+
 ## Service Discovery
 
 - Responsável por facilitar a comunicação entre 1 ou mais microserviços. Os microserviços se registram no Eureka e passam a ser chamado pelos demais através de sua alias.
