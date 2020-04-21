@@ -1,7 +1,7 @@
 
-API - Aplicação DOE Mais - Microservices
+# Aplicação DOE Mais
 
-Exemplo de uma aplicação em Spring Boot e Eureka utilizando microserviços
+Exemplo de uma aplicação em Spring Boot e Netflix OSS utilizando fundamentos das boas práticas de arquitetura de microserviços.
 
 ## Construído com:
 
