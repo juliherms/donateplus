@@ -47,20 +47,21 @@ Exemplo de uma aplicação em Spring Boot e Netflix OSS utilizando fundamentos d
 - Responsável por facilitar a comunicação entre 1 ou mais microserviços. Os microserviços se registram no Eureka e passam a ser chamado pelos demais através de sua alias.
 Este ponto ajuda bastante quando temos vários microserviços na solução e bem como mais de uma instância.
 
-- No exemplo abaixo é possível identificar dois serviços registrados no Eureka. o donateplusapi e o payment, dado a explicação acima podemos imaginar um cenário onde tivéssemo
-uma alto volume de requisições de pagamento por um período sazonal. Com a arquitetura proposta é possível duplicar o serviços de payment e registrar no Eukera realizando o
-balance do volume de requisições.
+- No exemplo abaixo é possível identificar dois serviços registrados no Eureka. o donateplusapi e o paymentapi, dado a explicação acima podemos imaginar um cenário onde tivéssemo
+uma alto volume de requisições de pagamento por um período sazonal. Com a arquitetura proposta é possível duplicar o serviços de paymentapi caracterizando uma escalabilidade horizontal
 
-<img src="img/eureka2.png">
+- Na imagem abaixo é possível constatar 3 microserviços de pagamento rodando nas portas: 8082,9991 e 9992
+
+<img src="img/eureka3.png">
 
 ## Monitoramento
 
 - Atualmente a ferramenta mais utilizada por grande empresas para monitoramento de microserviços é o Splunk. Neste caso aqui fiz a utilização de um projeto chamado 
 Spring Admin. A sua configuração é bem simples e sua interface é bastante amigável.
 
-- Visualização de Dashboard 
+- Visualização de Dashboard apresentando o tempos de disponibilidade atual e número de instâncias.
 
-<img src="img/spring_admin3.png">
+<img src="img/spring_admin4.png">
 
 - Detalhes de consumo e uso de memória
 
