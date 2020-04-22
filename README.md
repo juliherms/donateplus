@@ -67,7 +67,9 @@ Spring Admin. A sua configuração é bem simples e sua interface é bastante am
 
 <img src="img/spring_admin2.png">
 
-## Frontend - Angular
+## Frontend
+
+- Aplicação cliente utilizando Angular. O objetivo desta aplicação é exemplificar o acesso a API. Processo de instalação e execução descrito abaixo:
 
 ```sh
 $ npm install
@@ -77,3 +79,10 @@ $ ng serve -o
 <img src="img/frontend2.png">
 
 ## Solução
+
+- A arquitetura de microserviços tem sido bastante popular após o uso de sistemas através da cloud. Este tipo de arquitetura é caracterizado pela abordagem de 
+desmembrar o software através de comoponentes mínimos e independentes. Essa abordagem valoriza a granularidade, leveza e capacidade de compartilhamento de processos
+entre várias aplicações. Este ponto é indispensável para otimização do desenvolvimento de aplicações quando pensamos em um modelo nativo em nuvem.
+
+- A solução a apresentada aqui não tem fins de utilização comercial e sim apresentação de técnicas disponíveis no mercado para monitoramento, escalabilidade e independência 
+da solução como um todo.
